@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Vishnu msd develops the best quality website that serves for the long-term. Well-documented, clean, easy and elegant interface helps any non-technical clients.">
+  <meta name="keywords" content="portfolio, agency, business, clean, company, corporate, creative, gallery,web developer,programmer, Vishnu msd developer, Vishnu msd programmer,web developer near me,website developer,front end developer,website developer near me,web design near me,web programmer,freelance front end developer,freelance website developer,shopify web developer,fiverr web developer,junior web designer,css,javascript developers,
+    find a web developer,website design,responsive design,webdesigner,responsive website,best website design,website developers,homepage design,website developer near me,web responsive
+    ,modern website design,website design near me,wordpress web design,simple website design,designer website,cool website designs,affordable web design,web developer,css developer, javascript programmer,javascript developer,javascript frontend developer,programmer near me, vishnu msd99, vishnu msd github pofile, vishnu msd programmer, vishnu msd developer, vishnu msd software programmer, vishnu msd web developer, vishnu msd kozhikode, Vishnu Msd, VISHNU MSD, VISHNU MSD99, VISHNU MSD PROGRAMMER, 
+    creating a web app modern, photography, responsive,Responsive web design, bootstrap web design, bootstrap web designer near me, make money, sass">
+
+  <!-- title of the browser tab -->
+  <title>Vishnu Msd Portfolio</title>
+
+  <!-- favicon -->
+  <link rel="icon" href="assets/android-chrome-512x512.png">
+
+  <!-- fonts -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&amp;family=Roboto&amp;family=Saira+Stencil+One&amp;text=Nafie&amp;display=swap">
+    
+   <!-- additional Style -->
+   <link rel="stylesheet" href="styles/lightslider.css" />
+    <!--Jquery-->
+    <script type="text/javascript" src="JQuery3.3.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts/lightslider.js"></script>
+    
+    
+
+  <!-- css libraries file -->
+  <link rel="stylesheet" href="styles/libraries.min.css">
+
+  <!-- main style file -->
+  <link rel="stylesheet" href="styles/main.css">
+  <meta name="google-site-verification" content="2Mn6u7Sq8rXDgFq67LpEFKTHOEvoN5ShTrM2Y8VYPCQ" />
+</head>
+
+<body>
+  <div id="app">
+    <div id="app-inner" ref="appRef" :class="[savedTheme, {'enable-focus-style': isAnyFocus}]"
+      @click="isAnyFocus = false" @keyup.tab="isAnyFocus = true">
+
+      <div class="circle-cursor circle-cursor-outer" ref="circleCursorOuter"></div>
+      <div class="circle-cursor circle-cursor-inner" ref="circleCursorInner"></div>
+
+      <!-- start preloader-->
+      <transition name="preloader">
+        <div class="preloader" v-if="isPreloading">
+          <div class="circle">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+        </div>
+      </transition>
+      <!-- end preloader-->
+
+      <!-- start of header -->
+      <header :class="{
+          'big-header': isHeaderBig,
+          'small-header': !isHeaderBig,
+          'header-hidden': isHeaderHidden
+        }">
+        <div class="container">
+          <!-- logo -->
+          <div class="logo" title="Vishnu Msd">
+            <h1><a href="index-2.html">Vishnu Msd</a></h1>
+          </div>
+
+          <!-- nav links -->
+          <nav :class="{'menu-open': isNavMenuOpen}" ref="headerNav">
+
+            <!-- nav menu links -->
+            <ul class="nav-links">
+              <li v-for="link in navLinks" :key="link.url">
+                <a :href="link.url" @click="closeNavMenu">
+                  {{ link.title.en }}
+                </a>
+              </li>
+            </ul>
+
+            <!-- menu content in big devices (hidden in mobile/tablet) -->
+            <div class="desktop-menu-content" tabindex="-1">
+              <div class="container">
+
+                <!-- about us -->
+                <div class="about-us">
+                  <p>
+                    I love making things simple, intuitive and expertly crafted!
+                  </p>
+                  <h4 class="block-title">
+                    If we can fall in love with serving people, creating value, solving problems, building valuable
+                    connections and doing work that matters, it makes it far more likely we're going to do important
+                    work.
+                  </h4>
+                </div>
+
+                <!-- contact info -->
+                <ul class="contact-info row">
+                  <li class="col-lg-4">
+                    <h4 class="block-title">Email</h4>
+                    <ul>
+                      <li><a href="mailto:Vishnumsd99@gmail.com">Vishnumsd99@gmail.com</a></li>
+
+                    </ul>
+                  </li>
+                  <li class="col-lg-4">
+                    <h4 class="block-title">Address</h4>
+                    <ul>
+                      <li>
+                        if you find us "Thats great",
+                        <br>
+                        Vishnu msd <a href="tel:https://wa.me/message/7EOTTYRHXLJAA1">Whatsapp</a>
+                      </li>
+
+                </ul>
+                </li>
+                <li class="col-lg-4">
+                  <h4 class="block-title">Phone</h4>
+                  <ul>
+                    <li><a href="tel:+918075353824">(+91) 8075353824</a></li>
+                  </ul>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <!-- options icons -->
+          <ul class="options-icons">
+
+            <!-- lang switcher button -->
+            <li class="lang-switcher">
+
+              
+            </li>
+
+            <!-- theme switcher button -->
+            <li class="theme-switcher">
+              <button :class="savedTheme" title="Change Mode" @click="changeAppTheme"></button>
+            </li>
+
+            <!-- hamburger button -->
+            <li class="hamburger-btn" :class="{'open': isNavMenuOpen}">
+              <button @click="toggleNavMenu" title="Toggle Side Menu" aria-label="Toggle Side Menu"
+                ref="navMenuToggleBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <!-- end of header -->
+
+      <!-- start of hero section -->
+      <div id="hero" class="hero-section" ref="heroSection">
+        <div class="hero-img">
+          <div class="layer" v-clone>
+            <img src="assets/images/my_ps_modi-removebg-preview.png" alt="User Name">
+          </div>
+        </div>
+
+
+
+        <div class="hero-text">
+          <h2>
+            We Design & Build
+            <br>
+            Creative Products
+          </h2>
+          <a href="https://github.com/VishnuMsd99" class="btn">Github Profile</a>
+        </div>
+
+        <div class="social">
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/VishnuMsd999" target="_blank" rel="noreferrer"
+                v-tooltip="{text: 'Facebook', dir: 'right'}">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/VishnuMsd99" target="_blank" rel="noreferrer"
+                v-tooltip="{text: 'Twitter', dir: 'right'}">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/vishnu-msd-235500190/" target="_blank" rel="noreferrer"
+                v-tooltip="{text: 'LinkedIn', dir: 'right'}">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="scroll-down">
+          <a href="#about" title="Scroll Down">Scroll</a>
+        </div>
+      </div>
+      <!-- end of hero section -->
+
+      <!-- start of statistics section -->
+      <div id="statistics" class="statistics-section section">
+        <div class="section-content">
+          <div class="container">
+            <ul class="statistics-items row">
+              <li class="col-sm-12 col-md-6 col-lg-4">
+                <a href="#experience">
+                  <div class="icon">
+                    <img src="assets/images/icons/emblem.png" alt="Years of Experience">
+                  </div>
+                  <div class="text">
+                    <h3>{{}}2+</h3>
+                    <strong>Years of Experience</strong>
+                  </div>
+                  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="col-sm-12 col-md-6 col-lg-4">
+                <a href="#portfolio">
+                  <div class="icon">
+                    <img src="assets/images/icons/check-mark.png" alt="Completed Projects">
+                  </div>
+                  <div class="text">
+                    <h3>+</h3>
+                    <strong>Completed Projects</strong>
+                  </div>
+                  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="col-sm-12 col-md-6 col-lg-4">
+                <a href="#testimonials">
+                  <div class="icon">
+                    <img src="assets/images/icons/happy.png" alt="Happy Clients">
+                  </div>
+                  <div class="text">
+                    <h3>+</h3>
+                    <strong>Happy Clients</strong>
+                  </div>
+                  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- end of statistics section -->
+
+      <!-- start of about section -->
+      <div id="about" class="about-section section" tabindex="-1">
+        <div class="container">
+          <div class="section-content row">
+
+            <!-- about image -->
+            <div class="about-img col-lg-6">
+              <div class="layer" v-clone>
+                <img src="assets/images/IMG20200525170829-new.png" alt="User Name">
+              </div>
+            </div>
+
+            <!-- text box -->
+            <div class="about-text col-lg-6">
+              <div class="text-box">
+                <span class="subtitle">about me</span>
+                <h2>
+                  Need a Creative Product?
+                  <br>
+                  I can Help You!
+                </h2>
+                <p>
+                  Hi! I’m Vishnu Msd/G, and I’m a developer who has passion for building clean and responsive websites
+                  with
+                  intuitive functionality. I enjoy the process of turning ideas into reality using creative solutions.
+                  I’m always curious about learning new skills, tools, and concepts. In addition to working on various
+                  solo full stack projects, I have worked with creative teams, which involves daily stand-ups and
+                  communications, source control, and project management.
+                </p>
+                <div class="btns-container">
+                  <a href="#contact" class="btn btn-primary">Hire Me</a>
+                  <!--<a download href="#" class="btn btn-outline-light">Download CV</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of about section -->
+
+      <!-- start of skills section -->
+      <div id="skills" class="skills-section section" tabindex="-1">
+        <div class="container">
+          <div class="section-content row">
+
+            <!-- text box -->
+            <div class="skills-text col-lg-6">
+              <div class="text-box">
+                <span class="subtitle">my skills</span>
+                <h2>
+                  What My Programming
+                  <br>
+                  Skills Included?
+                </h2>
+                <p>
+                  I develop simple, intuitive and responsive user interface websites that helps users get things done
+                  with less
+                  effort and time with those technologies.
+                </p>
+                <div class="toggle-switch-btn">
+                  <input id="skills-list" type="radio" name="skillstype" value="skills" v-model="isSkillsOrTools"
+                    checked>
+                  <label for="skills-list" class="link-hover">Skills</label>
+                  <input id="tools-list" type="radio" name="skillstype" value="tools" v-model="isSkillsOrTools">
+                  <label for="tools-list" class="link-hover">Tools</label>
+                  <span class="switcher-toggle"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- skills items -->
+            <div class="skills-items col-lg-6">
+
+              <!-- skills list -->
+              <ul v-staggerdelay="50" v-show="isSkillsOrTools === 'skills'">
+                <li tabindex="0" v-for="skill in skillsItems" :key="skill.title"
+                  v-tooltip="{text: skill.title, dir: 'top'}">
+                  <div class="skill-icon">
+                    <img :src="skill.imgUrl" :alt="skill.title">
+                  </div>
+                </li>
+              </ul>
+
+              <!-- tools list -->
+              <ul v-staggerdelay="50" v-show="isSkillsOrTools === 'tools'">
+                <li tabindex="0" v-for="tool in toolsItems" :key="tool.title"
+                  v-tooltip="{text: tool.title, dir: 'top'}">
+                  <div class="skill-icon">
+                    <img :src="tool.imgUrl" :alt="tool.title">
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of skills section -->
+
+      <!-- start of experience section -->
+      <div id="experience" class="experience-section section" >
+          <h2 class="projects">Projects</h2>
+          <div class="container">
+            <div class="section-content row">
+
+              
+             
+              <!-- text box -->
+              <div class="experience-text col-lg-6" >
+                
+                <div class="container2">
+                  <ul id="autoWidth" class="cs-hidden">
+                    <li class="item-a">
+                      <div class="box">
+                        <p class="content">Youtube Clone</p>
+                        <video controls src="assets/Youtube clone video.mp4" class="model" poster="assets/yt clone tum.png"></video>
+              
+                        <div class="details">
+                          <p>
+                           Responsive Youtube Front-end clone made with Html5, Css3, and JavaScript. </p>
+                        </div>
+              
+                        <a href="" class="view">View</a>
+                      </div>
+                    </li>
+                    <li class="item-a">
+                      <div class="box">
+                        <p class="content">Snake Game</p>
+                        <video controls src="assets/snake game video_2_Trim.mp4" class="model" poster="assets/snake game tumbanile.png"></video>
+              
+                        <div class="details">
+                          <p>
+                             Responsive Snake Game made with Html5, Css3, and JavaScript.(Desktop Use Only)</p>
+                        </div>
+              
+                        <a href="" class="view">View</a>
+                      </div>
+                    </li>
+                    <li class="item-a">
+                      <div class="box">
+                        <p class="content">Spotify Clone</p>
+                        <video controls src="assets/spotify clone video.mp4" class="model" poster="assets/spotify clone tum.png"></video>
+              
+                        <div class="details">
+                          <p>
+                            Responsive Spotify Front-end clone made with Html5, Css3, and JavaScript. </p>
+                        </div>
+              
+                        <a href="" class="view">View</a>
+                      </div>
+                    </li>
+                    <li class="item-a">
+                      <div class="box">
+                        <p class="content">Business Website</p>
+                        <video controls src="assets/Business website video.mp4" class="model" poster="assets/business website tum.png"></video>
+              
+                        <div class="details">
+                          <p>This Business website made with html5, css and node.js mongoDb database.</p>
+                        </div>
+              
+                        <a href="" class="view">View</a>
+                      </div>
+                    </li>
+                    <li class="item-a">
+                      <div class="box">
+                        <p class="content">Real Estate Website</p>
+                        <video controls src="assets/real estate website video.mp4" class="model" poster="assets/real estate website tum.png"></video>
+              
+                        <div class="details">
+                          <p>Real Estate website made with bootstrap frame work, css and javaScript.</p>
+                        </div>
+              
+                        <a href="" class="view">View</a>
+                      </div>
+                    </li>
+                    
+              
+              
+              
+              
+              
+                   
+              
+                  </ul>
+              
+              
+                </div>
+                
+                
+              </div>
+            </div>
+            
+            
+            
+          </div>
+
+        </div>
+      <!-- start of portfolio section -->
+      <div id="portfolio" class="portfolio-section section" tabindex="-1">
+        <div class="container">
+          <div class="section-content">
+
+            <!-- portfolio items -->
+            <ul class="portfolio-items" ref="portfolioItems" data-no-more-works-msg="No more works to load">
+              <li>
+                <!-- text box -->
+                <div class="text-box">
+                  <span class="subtitle">'</span>
+                  <h2>
+                    See some My
+                    <br>
+                    Achievements
+                  </h2>
+                  <p>
+                    The real danger is not that computers will begin to think like men, but that men will begin to think
+                    like computers.
+                  </p>
+                  <ul class="works-filter">
+                    <li v-for="filter in ['All', ]" :key="filter">
+                      <button :class="{'active': worksFilter === filter.toLowerCase()}"
+                        @click="worksFilter = filter.toLowerCase()">
+                        {{ filter }}
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- start items list -->
+              <li class="portfolio-item" v-for="work in portfolioItems" :key="work.title.en"
+                v-show="worksFilter === 'all' || worksFilter === work.category.slug">
+                <a :href="work.url" target="_blank" rel="noopener">
+                  <div class="item-img">
+                    <img :src="work.imgUrl" :alt="work.title.en">
+                  </div>
+                  <div class="item-details">
+                    <h3 class="title">{{ work.title.en }}</h3>
+                    <div class="desc">{{ work.desc.en }}</div>
+                  </div>
+                </a>
+              </li>
+              <!-- end items list -->
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- end of portfolio section -->
+
+      <!-- start of testimonials section -->
+      <div id="testimonials" class="testimonials-section section" tabindex="-1">
+        <div class="container">
+          <div class="section-title">
+            <span class="subtitle"></span>
+            <h2>
+              Check What's Top
+              <br>
+              Success peaples are saying
+            </h2>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <ul class="testimonials-items" v-staggerdelay="500">
+            <li class="has-ultimate-tooltip" tabindex="0" v-for="item in testimonialsItems" :key="item.quoteAuthor.en">
+              <div class="testimonials-item">
+                <div class="testimonial-author-img">
+                  <img :src="item.imgUrl || 'assets/images/testimonials/anonymous-user.png'" :alt="item.quoteAuthor.en">
+                </div>
+                <div class="ultimate-tooltip">
+                  <p>{{ item.quoteContent.en }}</p>
+                  <h4 class="ultimate-tooltip-title">{{ item.quoteAuthor.en }}</h4>
+                  <h5 class="ultimate-tooltip-subtitle">{{ item.jobTitle.en }}</h5>
+                </div>
+                <div class="ultimate-tooltip-arrow"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- end of testimonials section -->
+
+      <!-- start of contact section -->
+      <div id="contact" class="contact-section section" tabindex="-1">
+        <div class="container">
+          <div class="section-content row">
+
+            <!-- text box -->
+            <div class="contact-text col-lg-6">
+              <div class="text-box">
+                <span class="subtitle">contact</span>
+                <h2>
+                  Have You Any Project?
+                  <br>
+                  Please Drop a Message
+                </h2>
+                <p>
+                  Get in touch and let me know how i can help. Fill out the form and i’ll be in touch as soon as
+                  possible.
+                </p>
+              </div>
+
+              <!-- contact info -->
+              <ul class="contact-info">
+                <li>
+                  <img src="assets/images/icons/address.png" alt="Address">
+                  <div>
+                    <strong>Address:</strong>
+                    Did you find us, <a href="tel:https://wa.me/message/7EOTTYRHXLJAA1">Whatsapp</a>
+                  </div>
+                </li>
+                <li>
+                  <img src="assets/images/icons/phone.png" alt="Phone">
+                  <div>
+                    <strong>Phone:</strong>
+                    <ul>
+                      <li><a href="tel:+918075353824" class="ltr-dir">+918075353824</a></li>
+
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <img src="assets/images/icons/email.png" alt="Email">
+                  <div>
+                    <strong>Email:</strong>
+                    <ul>
+                      <li><a href="mailto:vishnumsd99@gmail.com">vishnumsd99@gmail.com</a></li>
+
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+
+              <!-- social links -->
+              <ul class="social">
+                <li>
+                  <a href="https://www.facebook.com/VishnuMsd999" target="_blank" rel="noreferrer"
+                    v-tooltip="{text: 'Facebook', dir: 'top'}">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/VishnuMsd99" target="_blank" rel="noreferrer"
+                    v-tooltip="{text: 'Twitter', dir: 'top'}">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/vishnu-msd-235500190/" target="_blank" rel="noreferrer"
+                    v-tooltip="{text: 'LinkedIn', dir: 'top'}">
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/vishnumsd99" target="_blank" rel="noreferrer"
+                    v-tooltip="{text: 'instagram', dir: 'top'}">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- contact form -->
+            <div class="col-lg-6">
+              <form id="gform" ref="contactForm" class="contact-form form-styled" method="POST"
+                action="https://script.google.com/macros/s/AKfycbxj1BrHEIJfPfjnl-KYSVzWGwHKIsiRAPypnVgUmUafHIa9Y1cvl1t-fGNwWlf76dLb/exec"
+                data-success-msg="Message sent successfully!"
+                data-err-msg="Oops! something went wrong, please try again.">
+                <div class="group">
+                  <label>Name</label>
+                  <div class="control has-prefix-icon">
+                    <input type="text" name="name" placeholder="e.g. vishnu msd" minlength="3" required>
+                    <i class="fa fa-user-circle prefix-icon" aria-hidden="true"></i>
+
+                    <!-- validation errors messages -->
+                    <div class="errors-msgs">
+                      <input class="required" type="hidden" value="Name is required">
+                      <input class="minLength" type="hidden" value="Name must be at least 3 characters">
+                    </div>
+                  </div>
+                </div>
+                <div class="group">
+                  <label>Email</label>
+                  <div class="control has-prefix-icon">
+                    <input class="ltr-dir" type="email" inputmode="email" name="email"
+                      placeholder="e.g. vishnumsd99@gmail.com" required>
+                    <i class="fa fa-envelope prefix-icon" aria-hidden="true"></i>
+
+                    <!-- validation errors messages -->
+                    <div class="errors-msgs">
+                      <input class="required" type="hidden" value="Email is required">
+                      <input class="invalid" type="hidden" value="Please enter a valid email address">
+                    </div>
+                  </div>
+                </div>
+                <div class="group phone-number">
+                  <label>Phone <span class="optional">(Optional)</span></label>
+                  <div class="control has-prefix-icon">
+                    <input type="tel" inputmode="tel" name="phone" placeholder="Phone Number">
+                    <i class="fa fa-phone prefix-icon" aria-hidden="true"></i>
+
+                    <!-- validation errors messages -->
+                    <div class="errors-msgs">
+                      <input class="invalid" type="hidden" value="Please enter a valid Phone Number">
+                    </div>
+                  </div>
+                </div>
+                <div class="group">
+                  <label>Message</label>
+                  <div class="control has-prefix-icon">
+                    <textarea name="message" placeholder="Write message..." required></textarea>
+                    <i class="fa fa-comments prefix-icon" aria-hidden="true"></i>
+
+                    <!-- validation errors messages -->
+                    <div class="errors-msgs">
+                      <input class="required" type="hidden" value="Message is required">
+                    </div>
+                  </div>
+                </div>
+                <div class="group">
+                  <div class="control">
+                    <button class="submit-btn btn btn-dark" type="button" @click="contactFormValidation">Send</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of contact section -->
+
+      <!-- start of footer -->
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <!-- logo -->
+              <div class="logo" title="Vishnu Msd">
+                <h1><a href="index-2.html">Vishnu Msd</a></h1>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              &copy; {{ copyrightDate }} Proudly Powered by
+              <a href="Vishnu Msd" target="_blank" rel="noopener">Vishnu Msd</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- end of footer -->
+
+      <!-- scroll to top button -->
+      <button ref="scrollTopBtn" :class="['scroll-to-top', isScrollTopBtnDisplayed && 'show-scrollTop']"
+        title="Back To Top" tabindex="0" @click="scrollToTop">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+      </button>
+
+      <!-- toast notifications -->
+      <ul class="notifications-container">
+        <transition-group name="notify">
+          <li v-for="notify of notifications" :key="notify.id" :id="notify.id"
+            :class="['notification', 'show', notify.className, notify.time && 'timer']">
+            {{ notify.msg }}
+            <i class="fa fa-times link-hover" aria-hidden="true" @click="dismissNotify(notify.id)"></i>
+            <span v-if="notify.time" class="disappearing-time"
+              :style="{ 'animation-duration': notify.time + 'ms' }"></span>
+          </li>
+        </transition-group>
+      </ul>
+
+
+
+
+
+      
+
+      <!-- ajax loading -->
+      <div v-show="isAjaxLoading" class="ajax-loading">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- js plugins file -->
+  <script src="scripts/plugins.min.js"></script>
+
+  <!-- main script file -->
+  <script src="scripts/main.js"></script>
+
+ <script src="scripts/index.js"></script>
+
+</body>
+
+
+</html>
